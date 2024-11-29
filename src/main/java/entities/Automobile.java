@@ -1,4 +1,4 @@
-package domains;
+package entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
