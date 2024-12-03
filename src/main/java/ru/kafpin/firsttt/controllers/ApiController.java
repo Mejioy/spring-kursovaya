@@ -1,12 +1,11 @@
 package ru.kafpin.firsttt.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.kafpin.firsttt.entities.*;
 import ru.kafpin.firsttt.services.*;
+
+import java.time.LocalDate;
 
 @RequestMapping("/api")
 @RestController
@@ -60,7 +59,7 @@ public class ApiController {
         return employerService.getAllEmployers();
     }
 
-    @GetMapping("/ru/kafpin/firsttt/services")
+    @GetMapping("/services")
     public Iterable<Service> listOfServices(){
         return serviceService.getAllServices();
     }
@@ -97,9 +96,84 @@ public class ApiController {
     }
 
     ///Standard posts
+    @PostMapping("/automobile/add")
+    public Automobile newAutomobile(@RequestBody Automobile automobile){
+        return automobileService.addEditAutomobile(automobile);
+    }
+
+    @PostMapping("/client/add")
+    public Client newClient(@RequestBody Client client){
+        return clientService.addEditClient(client);
+    }
+
+    @PostMapping("/employer/add")
+    public Employer newEmployer(@RequestBody Employer employer){
+        return employerService.addEditEmployer(employer);
+    }
+
+    @PostMapping("/service/add")
+    public Service newService(@RequestBody Service service){
+        return serviceService.addEditService(service);
+    }
+
+    @PostMapping("/providedservice/add")
+    public ProvidedService newProvidedService(@RequestBody ProvidedService providedService){
+        return providedServiceService.addEditProvidedService(providedService);
+    }
 
     ///Standard puts
+    @PutMapping("/automobile/{id}")
+    public Automobile updateAutomobile(@RequestBody Automobile automobile,
+                           @PathVariable("id") Long id){
+        return automobileService.addEditAutomobile(automobile);
+    }
 
+    @PutMapping("/client/{id}")
+    public Client updateClient(@RequestBody Client client,
+                                       @PathVariable("id") Long id){
+        return clientService.addEditClient(client);
+    }
+
+    @PutMapping("/employer/{id}")
+    public Employer updateEmployer(@RequestBody Employer employer,
+                                       @PathVariable("id") Long id){
+        return employerService.addEditEmployer(employer);
+    }
+
+    @PutMapping("/service/{id}")
+    public Service updateService(@RequestBody Service service,
+                                       @PathVariable("id") Long id){
+        return serviceService.addEditService(service);
+    }
+
+    @PutMapping("/providedservice/{id}")
+    public ProvidedService updateProvidedService(@RequestBody ProvidedService providedService,
+                                       @PathVariable("id") Long id){
+        return providedServiceService.addEditProvidedService(providedService);
+    }
     ///Standard deletes
+    @DeleteMapping("/automobile/{id}")
+    public void deleteAutomobile(@PathVariable("id") Long id){
+        automobileService.deleteAutomobileById(id);
+    }
 
+    @DeleteMapping("/client/{id}")
+    public void deleteClient(@PathVariable("id") Long id){
+        clientService.deleteClientById(id);
+    }
+
+    @DeleteMapping("/employer/{id}")
+    public void deleteEmployer(@PathVariable("id") Long id){
+        employerService.deleteEmployerById(id);
+    }
+
+    @DeleteMapping("/service/{id}")
+    public void deleteService(@PathVariable("id") Long id){
+        serviceService.deleteServiceById(id);
+    }
+
+    @DeleteMapping("/providedservice/{id}")
+    public void deleteProvidedService(@PathVariable("id") Long id){
+        providedServiceService.deleteProvidedServiceById(id);
+    }
 }

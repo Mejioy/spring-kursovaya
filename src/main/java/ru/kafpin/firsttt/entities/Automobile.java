@@ -38,7 +38,7 @@ public class Automobile {
     private String model;
 
     @Column(name = "gosnumber", nullable = false)
-    @Pattern(regexp = "^[ABEKMHOPCTYX]\\d{3}(?<!000)[ABEKMHOPCTYX]{2}\\d{2,3}$")
+    @Pattern(regexp = "^[ABEKMHOPCTYX]\\d{3}(?<!000)[ABEKMHOPCTYX]{2}\\d{2,3}rus$")
     private String gosnumber;
 
     @ManyToOne
