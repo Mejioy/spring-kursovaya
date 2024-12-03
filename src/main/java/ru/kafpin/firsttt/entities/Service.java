@@ -1,4 +1,4 @@
-package entities;
+package ru.kafpin.firsttt.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
@@ -13,6 +13,13 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
+@Table(uniqueConstraints =
+        {
+                @UniqueConstraint(columnNames = "id"),
+                @UniqueConstraint(columnNames = "name")
+        },
+        name = "services"
+)
 public class Service {
 
     @Id
@@ -33,7 +40,7 @@ public class Service {
     @Size(min = 2, max=200, message = "Допустимая длина названия услуги от 2ух до 200от символов")
     private String description;
 
-    @OneToMany(mappedBy = "service_id", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "service", cascade = CascadeType.ALL)
     @JsonBackReference
     private List<ProvidedService> providedServices;
 
@@ -49,4 +56,5 @@ public class Service {
         this.price = price;
         this.description = description;
     }
+
 }

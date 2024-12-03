@@ -1,10 +1,10 @@
-package repositories;
+package ru.kafpin.firsttt.repositories;
 
-import entities.Automobile;
-import entities.Client;
+import ru.kafpin.firsttt.entities.Client;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ClientRepository extends CrudRepository<Client, Long> {
+    Client findByPhone(String phone);
 }

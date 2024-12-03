@@ -1,10 +1,10 @@
-package services;
+package ru.kafpin.firsttt.services;
 
-import entities.Client;
+import ru.kafpin.firsttt.entities.Client;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repositories.ClientRepository;
+import ru.kafpin.firsttt.repositories.ClientRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -38,5 +38,10 @@ public class ClientService {
 
     public Client addEditClient(Client client) {
         return clientRepository.save(client);
+    }
+
+    ///Specific methods
+    public Client getClientByPhone(String phone){
+        return clientRepository.findByPhone(phone);
     }
 }

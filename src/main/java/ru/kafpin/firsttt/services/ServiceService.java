@@ -1,12 +1,9 @@
-package services;
+package ru.kafpin.firsttt.services;
 
-import entities.Employer;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Service;
-import entities.Service;
-import repositories.EmployerRepository;
-import repositories.ServiceRepository;
+import ru.kafpin.firsttt.entities.Service;
+import ru.kafpin.firsttt.repositories.ServiceRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -41,4 +38,6 @@ public class ServiceService {
     public Service addEditService(Service service) {
         return serviceRepository.save(service);
     }
+
+
 }

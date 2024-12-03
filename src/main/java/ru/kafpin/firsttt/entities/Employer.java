@@ -1,4 +1,4 @@
-package entities;
+package ru.kafpin.firsttt.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
@@ -14,6 +14,13 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
+@Table(uniqueConstraints =
+        {
+                @UniqueConstraint(columnNames = "id"),
+                @UniqueConstraint(columnNames = "phone")
+        },
+        name = "employers"
+)
 public class Employer {
 
     @Id
@@ -31,7 +38,7 @@ public class Employer {
     @Size(min = 2, max=20, message = "Допустимая длина фамилии от 2ух до 20ти символов")
     private String surName;
 
-    @Column(name = "patronym", nullable = true)
+    @Column(name = "patronym", nullable = false)
     @Size(min = 2, max=20, message = "Допустимая длина отчества от 2ух до 20ти символов")
     private String patronym;
 
@@ -55,7 +62,7 @@ public class Employer {
     @Min(value = 1, message = "Номер квартиры не может быть <= 0")
     private Integer appartment;
 
-    @OneToMany(mappedBy = "employer_id", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "employer", cascade = CascadeType.ALL)
     @JsonBackReference
     private List<ProvidedService> providedServices;
 

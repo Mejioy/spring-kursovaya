@@ -1,10 +1,10 @@
-package services;
+package ru.kafpin.firsttt.services;
 
-import entities.Automobile;
+import ru.kafpin.firsttt.entities.Automobile;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repositories.AutomobileRepository;
+import ru.kafpin.firsttt.repositories.AutomobileRepository;
 
 
 import java.util.List;
@@ -39,5 +39,14 @@ public class AutomobileService {
 
     public Automobile addEditAutomobile(Automobile automobile) {
         return automobileRepository.save(automobile);
+    }
+
+    ///Specific methods
+    public Automobile getAutomobileByGosnumber(String gosnumber){
+        return automobileRepository.findByGosnumber(gosnumber);
+    }
+
+    public List<Automobile> getAllAutomobilesByClientPhone(String phone) {
+        return (List<Automobile>) automobileRepository.findByClientPhone(phone);
     }
 }
