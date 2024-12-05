@@ -5,7 +5,6 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.kafpin.firsttt.repositories.EmployerRepository;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -13,11 +12,6 @@ import java.util.Optional;
 public class EmployerService {
     @Autowired
     private EmployerRepository employerRepository;
-
-    @Autowired
-    public void setEmployerRepository(EmployerRepository employerRepository) {
-        this.employerRepository = employerRepository;
-    }
 
     public List<Employer> getAllEmployers() {
         return (List<Employer>) employerRepository.findAll();
@@ -39,6 +33,4 @@ public class EmployerService {
     public Employer addEditEmployer(Employer employer) {
         return employerRepository.save(employer);
     }
-
-
 }

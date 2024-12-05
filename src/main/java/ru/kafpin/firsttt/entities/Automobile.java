@@ -5,23 +5,24 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.util.List;
 
 @Entity
 @Data
 @NoArgsConstructor
-@Table(uniqueConstraints =
-        {
-                @UniqueConstraint(columnNames = "id"),
-                @UniqueConstraint(columnNames = "gosnumber")
-        },
-        name = "automobiles"
-)
+@AllArgsConstructor
+//@Table(uniqueConstraints =
+//        {
+//                @UniqueConstraint(columnNames = "id"),
+//                @UniqueConstraint(columnNames = "gosnumber")
+//        },
+//        name = "automobiles"
+//)
+@Table(name = "automobiles")
 public class Automobile {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -48,12 +49,4 @@ public class Automobile {
     @OneToMany(mappedBy = "automobile", cascade = CascadeType.ALL)
     @JsonBackReference
     private List<ProvidedService> providedServices;
-
-    public Automobile(long id, String mark, String model, String gosnumber, Client client) {
-        this.id = id;
-        this.mark = mark;
-        this.model = model;
-        this.gosnumber = gosnumber;
-        this.client = client;
-    }
 }

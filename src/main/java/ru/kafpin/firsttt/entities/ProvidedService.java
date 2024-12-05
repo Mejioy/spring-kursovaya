@@ -1,20 +1,20 @@
 package ru.kafpin.firsttt.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
-
 import java.time.LocalDate;
-
 
 @Entity
 @Data
 @NoArgsConstructor
-@Table(uniqueConstraints= @UniqueConstraint(columnNames={"id", "dateofprovide"}) ,
-        name = "providedservices")
+@AllArgsConstructor
+//@Table(uniqueConstraints= @UniqueConstraint(columnNames={"id", "dateofprovide"}) ,
+//        name = "providedservices")
+@Table(name = "providedservices")
 public class ProvidedService {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -35,13 +35,4 @@ public class ProvidedService {
     @DateTimeFormat(pattern="yyyy-MM-dd")
     @Column(name = "dateofprovide", nullable = false)
     private LocalDate dateOfProvide;
-
-    public ProvidedService(long id, Service service, Employer employer, Automobile automobile, LocalDate dateOfProvide) {
-        this.id = id;
-        this.service = service;
-        this.employer = employer;
-        this.automobile = automobile;
-        this.dateOfProvide = dateOfProvide;
-    }
-
 }

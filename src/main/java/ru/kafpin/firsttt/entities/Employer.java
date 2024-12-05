@@ -6,23 +6,24 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.util.List;
 
 @Entity
 @Data
 @NoArgsConstructor
-@Table(uniqueConstraints =
-        {
-                @UniqueConstraint(columnNames = "id"),
-                @UniqueConstraint(columnNames = "phone")
-        },
-        name = "employers"
-)
+@AllArgsConstructor
+//@Table(uniqueConstraints =
+//        {
+//                @UniqueConstraint(columnNames = "id"),
+//                @UniqueConstraint(columnNames = "phone")
+//        },
+//        name = "employers"
+//)
+@Table(name = "employers")
 public class Employer {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -76,17 +77,5 @@ public class Employer {
         this.city = city;
         this.street = street;
         this.house = house;
-    }
-
-    public Employer(long id,String surName, String name, String patronym, String phone,  String city, String street, int house, int appartment) {
-        this.id = id;
-        this.name = name;
-        this.surName = surName;
-        this.patronym = patronym;
-        this.phone = phone;
-        this.city = city;
-        this.street = street;
-        this.house = house;
-        this.appartment = appartment;
     }
 }

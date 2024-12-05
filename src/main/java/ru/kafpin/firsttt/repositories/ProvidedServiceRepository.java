@@ -5,9 +5,11 @@ import ru.kafpin.firsttt.entities.ProvidedService;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
 public interface ProvidedServiceRepository extends CrudRepository<ProvidedService, Long> {
     List<Automobile> findByAutomobileGosnumber(String gosnumber);
+    List<ProvidedService> findAllByDateOfProvideBetween(LocalDate from, LocalDate to);
 }

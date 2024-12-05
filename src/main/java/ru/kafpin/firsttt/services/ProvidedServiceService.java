@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.kafpin.firsttt.repositories.ProvidedServiceRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,11 +14,6 @@ import java.util.Optional;
 public class ProvidedServiceService {
     @Autowired
     private ProvidedServiceRepository providedServiceRepository;
-
-    @Autowired
-    public void setProvidedServiceRepository(ProvidedServiceRepository providedServiceRepository) {
-        this.providedServiceRepository = providedServiceRepository;
-    }
 
     public List<ProvidedService> getAllProvidedServices() {
         return (List<ProvidedService>) providedServiceRepository.findAll();
@@ -38,5 +34,9 @@ public class ProvidedServiceService {
 
     public ProvidedService addEditProvidedService(ProvidedService providedService) {
         return providedServiceRepository.save(providedService);
+    }
+
+    public List<ProvidedService> getAllProvidedServicesFromTo(LocalDate from, LocalDate to){
+        return providedServiceRepository.findAllByDateOfProvideBetween(from,to);
     }
 }

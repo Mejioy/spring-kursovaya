@@ -5,7 +5,6 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.kafpin.firsttt.repositories.ClientRepository;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -13,11 +12,6 @@ import java.util.Optional;
 public class ClientService {
     @Autowired
     private ClientRepository clientRepository;
-
-    @Autowired
-    public void setClientRepository(ClientRepository clientRepository) {
-        this.clientRepository = clientRepository;
-    }
 
     public List<Client> getAllClients() {
         return (List<Client>) clientRepository.findAll();

@@ -5,8 +5,6 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.kafpin.firsttt.repositories.AutomobileRepository;
-
-
 import java.util.List;
 import java.util.Optional;
 
@@ -14,11 +12,6 @@ import java.util.Optional;
 public class AutomobileService {
     @Autowired
     private AutomobileRepository automobileRepository;
-
-    @Autowired
-    public void setAutomobileRepository(AutomobileRepository automobileRepository) {
-        this.automobileRepository = automobileRepository;
-    }
 
     public List<Automobile> getAllAutomobiles() {
         return (List<Automobile>) automobileRepository.findAll();
@@ -48,5 +41,9 @@ public class AutomobileService {
 
     public List<Automobile> getAllAutomobilesByClientPhone(String phone) {
         return (List<Automobile>) automobileRepository.findByClientPhone(phone);
+    }
+
+    public List<Automobile> getAllAutomobilesByClientId(Long id) {
+        return (List<Automobile>) automobileRepository.findByClientId(id);
     }
 }

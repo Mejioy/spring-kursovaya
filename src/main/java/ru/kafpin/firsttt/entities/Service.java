@@ -5,23 +5,24 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.util.List;
 
 @Entity
 @Data
 @NoArgsConstructor
-@Table(uniqueConstraints =
-        {
-                @UniqueConstraint(columnNames = "id"),
-                @UniqueConstraint(columnNames = "name")
-        },
-        name = "services"
-)
+@AllArgsConstructor
+//@Table(uniqueConstraints =
+//        {
+//                @UniqueConstraint(columnNames = "id"),
+//                @UniqueConstraint(columnNames = "name")
+//        },
+//        name = "services"
+//)
+@Table(name = "services")
 public class Service {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -49,12 +50,4 @@ public class Service {
         this.name = name;
         this.price = price;
     }
-
-    public Service(long id, String name, int price, String description) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.description = description;
-    }
-
 }

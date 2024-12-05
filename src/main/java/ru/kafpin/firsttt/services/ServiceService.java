@@ -4,7 +4,6 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import ru.kafpin.firsttt.entities.Service;
 import ru.kafpin.firsttt.repositories.ServiceRepository;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -12,11 +11,6 @@ import java.util.Optional;
 public class ServiceService {
     @Autowired
     private ServiceRepository serviceRepository;
-
-    @Autowired
-    public void setServiceRepository(ServiceRepository serviceRepository) {
-        this.serviceRepository = serviceRepository;
-    }
 
     public List<Service> getAllServices() {
         return (List<Service>) serviceRepository.findAll();
@@ -38,6 +32,4 @@ public class ServiceService {
     public Service addEditService(Service service) {
         return serviceRepository.save(service);
     }
-
-
 }
