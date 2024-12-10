@@ -7,7 +7,5 @@ import java.util.List;
 
 @Repository
 public interface AutomobileRepository extends CrudRepository<Automobile, Long> {
-    List<Automobile> findByClientPhone(String phone);
     List<Automobile> findByClientId(Long id);
-    Automobile findByGosnumber(String gosnumber);
 }

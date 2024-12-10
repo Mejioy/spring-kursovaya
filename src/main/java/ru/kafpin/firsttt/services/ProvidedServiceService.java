@@ -39,4 +39,7 @@ public class ProvidedServiceService {
     public List<ProvidedService> getAllProvidedServicesFromTo(LocalDate from, LocalDate to){
         return providedServiceRepository.findAllByDateOfProvideBetween(from,to);
     }
+    public List<ProvidedService> getAllProvidedServicesByAutomobileId(Long id){
+        return providedServiceRepository.findByAutomobileId(id);
+    }
 }

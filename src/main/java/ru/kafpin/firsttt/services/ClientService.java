@@ -35,7 +35,4 @@ public class ClientService {
     }
 
     ///Specific methods
-    public Client getClientByPhone(String phone){
-        return clientRepository.findByPhone(phone);
-    }
 }

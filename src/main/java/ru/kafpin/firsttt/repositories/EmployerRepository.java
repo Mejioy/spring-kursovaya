@@ -6,5 +6,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface EmployerRepository extends CrudRepository<Employer, Long> {
-    Employer findByPhone(String phone);
 }

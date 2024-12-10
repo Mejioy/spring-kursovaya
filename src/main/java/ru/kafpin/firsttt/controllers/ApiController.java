@@ -173,4 +173,9 @@ public class ApiController {
     public Iterable<ProvidedService> listOfProvidedServices(@PathVariable("from") LocalDate from,@PathVariable("to") LocalDate to ){
         return providedServiceService.getAllProvidedServicesFromTo(from,to);
     }
+
+    @GetMapping("/providededservicesofautomobile/{id}")
+    public Iterable<ProvidedService> listOfProvidedServices(@PathVariable("id") Long id){
+        return providedServiceService.getAllProvidedServicesByAutomobileId(id);
+    }
 }

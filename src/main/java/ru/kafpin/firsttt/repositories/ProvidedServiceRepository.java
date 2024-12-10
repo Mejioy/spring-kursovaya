@@ -10,6 +10,6 @@ import java.util.List;
 
 @Repository
 public interface ProvidedServiceRepository extends CrudRepository<ProvidedService, Long> {
-    List<Automobile> findByAutomobileGosnumber(String gosnumber);
+    List<ProvidedService> findByAutomobileId(Long id);
     List<ProvidedService> findAllByDateOfProvideBetween(LocalDate from, LocalDate to);
 }

@@ -35,15 +35,7 @@ public class AutomobileService {
     }
 
     ///Specific methods
-    public Automobile getAutomobileByGosnumber(String gosnumber){
-        return automobileRepository.findByGosnumber(gosnumber);
-    }
-
-    public List<Automobile> getAllAutomobilesByClientPhone(String phone) {
-        return (List<Automobile>) automobileRepository.findByClientPhone(phone);
-    }
-
     public List<Automobile> getAllAutomobilesByClientId(Long id) {
-        return (List<Automobile>) automobileRepository.findByClientId(id);
+        return automobileRepository.findByClientId(id);
     }
 }
