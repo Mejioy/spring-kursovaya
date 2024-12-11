@@ -81,27 +81,27 @@ public class ApiController {
     }
 
     ///Standard posts
-    @PostMapping("/automobiles/add")
+    @PostMapping("/automobiles")
     public Automobile newAutomobile(@RequestBody Automobile automobile){
         return automobileService.addEditAutomobile(automobile);
     }
 
-    @PostMapping("/clients/add")
+    @PostMapping("/clients")
     public Client newClient(@RequestBody Client client){
         return clientService.addEditClient(client);
     }
 
-    @PostMapping("/employers/add")
+    @PostMapping("/employers")
     public Employer newEmployer(@RequestBody Employer employer){
         return employerService.addEditEmployer(employer);
     }
 
-    @PostMapping("/services/add")
+    @PostMapping("/services")
     public Service newService(@RequestBody Service service){
         return serviceService.addEditService(service);
     }
 
-    @PostMapping("/providedservices/add")
+    @PostMapping("/providedservices")
     public ProvidedService newProvidedService(@RequestBody ProvidedService providedService){
         return providedServiceService.addEditProvidedService(providedService);
     }
@@ -164,17 +164,37 @@ public class ApiController {
     }
 
     ///Unstandart responses
-    @GetMapping("/automobilesofowner/{id}")
+    @GetMapping("/automobiles/owner/{id}")
     public Iterable<Automobile> listOfAutomobiles(@PathVariable("id") Long id){
         return automobileService.getAllAutomobilesByClientId(id);
     }
 
-    @GetMapping("/providededservicesbetween/from={from}to={to}")
+    @GetMapping("/clients/phone/{phone}")
+    public Client getClientByPhone(@PathVariable("phone") String phone){
+        return clientService.getClientByPhone(phone);
+    }
+
+    @GetMapping("/automobiles/gosnumber/{gosnumber}")
+    public Automobile getAutomobileByGosnumber(@PathVariable("gosnumber") String gosnumber){
+        return automobileService.getAutomobileByGosnumber(gosnumber);
+    }
+
+    @GetMapping("/employers/phone/{phone}")
+    public Employer getEmployerByPhone(@PathVariable("phone") String phone){
+        return employerService.getEmployerByPhone(phone);
+    }
+
+    @GetMapping("/services/name/{name}")
+    public Service getServiceByName(@PathVariable("name") String name){
+        return serviceService.getServiceByName(name);
+    }
+
+    @GetMapping("/providededservices/between/from={from}to={to}")
     public Iterable<ProvidedService> listOfProvidedServices(@PathVariable("from") LocalDate from,@PathVariable("to") LocalDate to ){
         return providedServiceService.getAllProvidedServicesFromTo(from,to);
     }
 
-    @GetMapping("/providededservicesofautomobile/{id}")
+    @GetMapping("/providededservices/automobile/{id}")
     public Iterable<ProvidedService> listOfProvidedServices(@PathVariable("id") Long id){
         return providedServiceService.getAllProvidedServicesByAutomobileId(id);
     }

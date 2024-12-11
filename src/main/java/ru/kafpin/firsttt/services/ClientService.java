@@ -35,4 +35,11 @@ public class ClientService {
     }
 
     ///Specific methods
+    public Client getClientByPhone(String phone) {
+        Optional<Client> client = clientRepository.findByPhone(phone);
+        if(client.isEmpty()){
+            throw new EntityNotFoundException("Клиент не найден");
+        }
+        return client.get();
+    }
 }

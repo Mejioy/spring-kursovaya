@@ -33,4 +33,13 @@ public class EmployerService {
     public Employer addEditEmployer(Employer employer) {
         return employerRepository.save(employer);
     }
+
+    ///Specific methods
+    public Employer getEmployerByPhone(String phone) {
+        Optional<Employer> employer = employerRepository.findByPhone(phone);
+        if(employer.isEmpty()){
+            throw new EntityNotFoundException("Сотрудник не найден");
+        }
+        return employer.get();
+    }
 }

@@ -38,4 +38,13 @@ public class AutomobileService {
     public List<Automobile> getAllAutomobilesByClientId(Long id) {
         return automobileRepository.findByClientId(id);
     }
+
+    public Automobile getAutomobileByGosnumber(String gosnumber) {
+        Optional<Automobile> automobile = automobileRepository.findByGosnumber(gosnumber);
+        if(automobile.isEmpty()){
+            throw new EntityNotFoundException("Автомобиль не найден");
+        }
+        return automobile.get();
+    }
+
 }

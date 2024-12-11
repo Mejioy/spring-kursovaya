@@ -32,4 +32,13 @@ public class ServiceService {
     public Service addEditService(Service service) {
         return serviceRepository.save(service);
     }
+
+    ///
+    public Service getServiceByName(String name) {
+        Optional<Service> service = serviceRepository.findByName(name);
+        if(service.isEmpty()){
+            throw new EntityNotFoundException("Услуга не найдена");
+        }
+        return service.get();
+    }
 }
