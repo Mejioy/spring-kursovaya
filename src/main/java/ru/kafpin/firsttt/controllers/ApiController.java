@@ -190,9 +190,9 @@ public class ApiController {
     }
 
     ///Unstandart responses
-    @GetMapping("/automobiles/owner/{id}")
-    public Iterable<Automobile> listOfAutomobiles(@PathVariable("id") Long id){
-        return automobileService.getAllAutomobilesByClientId(id);
+    @GetMapping("/automobiles/owner/{phone}")
+    public Iterable<Automobile> listOfAutomobiles(@PathVariable("phone") String phone){
+        return automobileService.getAllAutomobilesByClientPhone(phone);
     }
 
     @GetMapping("/clients/phone/{phone}")

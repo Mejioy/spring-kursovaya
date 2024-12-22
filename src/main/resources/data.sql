@@ -26,3 +26,7 @@ INSERT INTO providedservices (service_id, employer_id, automobile_id, dateofprov
 
 INSERT INTO users (username, password, role) VALUES ('admin','$2a$10$rQwyOmpHusvvnf7GXPLHYO0f264VlaIqB59X2R8dmIbD7dBT3Y9TS','ROLE_ADMIN');
 INSERT INTO users (username, password, role) VALUES ('employer','$2a$10$GRkMVl9Q3Pei9ZmU3zFZN.jrI6htFciAgVqkqiqY5s7SQKrNpXLVe','ROLE_EMPLOYER');
+
+INSERT INTO users (username, password, role) VALUES ('8(123)456-78-90','$2a$10$vtbT3YfR1pEyT9Y.HAvj/.LQX4otxeb9IeIlKGpv5eczPncNurpXK','ROLE_USER');
+INSERT INTO users (username, password, role) VALUES ('8(123)456-78-93','$2a$10$2GIUAWgIvfGSP0UDdONZoO02yO7lFydySdknoB9R/36ZEClcp.ANu','ROLE_USER');
+INSERT INTO users (username, password, role) VALUES ('8(123)456-78-91','$2a$10$pmFCKepmk2eq8hOYHinq6OoA1uQ8HRBlAsYcXfg5GfIQBS41dV2.y','ROLE_USER');

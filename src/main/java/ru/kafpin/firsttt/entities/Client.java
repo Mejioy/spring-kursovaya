@@ -42,7 +42,7 @@ public class Client  {
     private String patronym;
 
     @Column(name = "phone", nullable = false)
-    @Pattern(regexp = "^\\d\\(\\d{3}\\)\\d{3}-\\d{2}-\\d{2}$",message = "Телефон должен быть введён в формате: 8(***)***-**-**")
+    @Pattern(regexp = "^8\\(\\d{3}\\)\\d{3}-\\d{2}-\\d{2}$",message = "Телефон должен быть введён в формате: 8(***)***-**-**")
     private String phone;
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)

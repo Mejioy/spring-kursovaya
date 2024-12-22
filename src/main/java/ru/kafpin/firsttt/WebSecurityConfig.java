@@ -20,21 +20,16 @@ public class WebSecurityConfig {
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http            .authorizeHttpRequests((auth) -> auth
-//                        .requestMatchers("/api/automobiles","/api/automobiles/**","/api/providedservices","/api/providedservices/**").hasRole("EMPLOYER")
-//                        .requestMatchers("/api/employers","/api/employers/**","/api/services","/api/services/**").hasRole("ADMIN")
-//                        .requestMatchers(HttpMethod.GET,"/api/services","/api/services/**").authenticated()
-//                        .requestMatchers(HttpMethod.GET, "/api/clients","/api/clients/**").hasRole("EMPLOYER")
-//                        .requestMatchers(HttpMethod.GET, "/api/automobiles/**","/api/automobiles/**").hasRole("USER")
-//                )
+                        .requestMatchers(HttpMethod.POST,"/api/employers","/api/services").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT,"/api/employers/**","/api/services/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE,"/api/employers/**","/api/services/**").hasRole("ADMIN")
 
-//                .anyRequest().authenticated()
-//                        .requestMatchers(HttpMethod.GET,"/api/employers/**").hasRole("ADMIN")
-//                        .requestMatchers(HttpMethod.GET,"/api/login").authenticated()
+                        .requestMatchers(HttpMethod.POST,"/api/automobiles","/api/providedservices").hasRole("EMPLOYER")
+                        .requestMatchers(HttpMethod.PUT,"/api/automobiles/**","/api/providedservices/**").hasRole("EMPLOYER")
+                        .requestMatchers(HttpMethod.DELETE,"/api/automobiles/**","/api/providedservices/**").hasRole("EMPLOYER")
+
+                        .requestMatchers(HttpMethod.GET,"**").authenticated()
                         .requestMatchers("/api/login").authenticated()
-                        .requestMatchers("/api/employers/**").authenticated()
-                        .requestMatchers("/api/services/**").authenticated()
-                        .requestMatchers("/api/providedservices/**").authenticated()
-                        .requestMatchers("/api/automobiles/**").authenticated()
                         .requestMatchers(HttpMethod.POST, "/api/registry").anonymous())
 
                 .csrf(AbstractHttpConfigurer::disable)

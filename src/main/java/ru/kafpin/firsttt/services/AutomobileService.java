@@ -35,8 +35,8 @@ public class AutomobileService {
     }
 
     ///Specific methods
-    public List<Automobile> getAllAutomobilesByClientId(Long id) {
-        return automobileRepository.findByClientId(id);
+    public List<Automobile> getAllAutomobilesByClientPhone(String phone) {
+        return automobileRepository.findByClientPhone(phone);
     }
 
     public Automobile getAutomobileByGosnumber(String gosnumber) {
