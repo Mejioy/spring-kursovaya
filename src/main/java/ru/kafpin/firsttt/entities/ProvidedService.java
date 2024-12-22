@@ -11,8 +11,6 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-//@Table(uniqueConstraints= @UniqueConstraint(columnNames={"id", "dateofprovide"}) ,
-//        name = "providedservices")
 @Table(name = "providedservices")
 public class ProvidedService {
     @Id

@@ -23,3 +23,6 @@ INSERT INTO providedservices (service_id, employer_id, automobile_id, dateofprov
 INSERT INTO providedservices (service_id, employer_id, automobile_id, dateofprovide) VALUES (1, 2, 1, '2024-02-19');
 INSERT INTO providedservices (service_id, employer_id, automobile_id, dateofprovide) VALUES (2, 3, 2, '2021-02-19');
 INSERT INTO providedservices (service_id, employer_id, automobile_id, dateofprovide) VALUES (2, 4, 2, '2022-02-19');
+
+INSERT INTO users (username, password, role) VALUES ('admin','$2a$10$rQwyOmpHusvvnf7GXPLHYO0f264VlaIqB59X2R8dmIbD7dBT3Y9TS','ROLE_ADMIN');
+INSERT INTO users (username, password, role) VALUES ('employer','$2a$10$GRkMVl9Q3Pei9ZmU3zFZN.jrI6htFciAgVqkqiqY5s7SQKrNpXLVe','ROLE_EMPLOYER');

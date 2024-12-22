@@ -1,11 +1,18 @@
 package ru.kafpin.firsttt.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
+import ru.kafpin.firsttt.UserDTO;
 import ru.kafpin.firsttt.entities.*;
 import ru.kafpin.firsttt.services.*;
 
+import java.security.Principal;
 import java.time.LocalDate;
+import java.util.List;
 
 
 @RequestMapping("/api")
@@ -27,6 +34,24 @@ public class ApiController {
     @Autowired
     private ProvidedServiceService providedServiceService;
 
+    @Autowired UserService userService;
+
+
+    @GetMapping("/login")
+    public String userLogin(Authentication auth){
+        String authority="";
+        for (GrantedAuthority grantedAuthority : auth.getAuthorities()) {
+            authority = grantedAuthority.getAuthority();
+            System.out.println(authority);
+        }
+        return authority;
+    }
+
+    @PostMapping("/registry")
+    public String userRegistry(@RequestBody UserDTO user){
+        return userService.createUser(user);
+    }
+
     ///Standard getAll
     @GetMapping("/automobiles")
     public Iterable<Automobile> listOfAutomobiles(){
@@ -35,6 +60,7 @@ public class ApiController {
 
     @GetMapping("/clients")
     public Iterable<Client> listOfClients(){
+//        principal.getName();
         return clientService.getAllClients();
     }
 
@@ -198,4 +224,6 @@ public class ApiController {
     public Iterable<ProvidedService> listOfProvidedServices(@PathVariable("id") Long id){
         return providedServiceService.getAllProvidedServicesByAutomobileId(id);
     }
+
+
 }
