@@ -9,5 +9,6 @@ import java.util.Optional;
 @Repository
 public interface AutomobileRepository extends CrudRepository<Automobile, Long> {
     List<Automobile> findByClientPhone(String phone);
-    Optional<Automobile> findByGosnumber(String gosnumber);
+    List<Automobile> findByStatusTrueAndClientPhone(String phone);
+    Optional<Automobile> findByGosnumberAndStatusTrue(String gosnumber);
 }

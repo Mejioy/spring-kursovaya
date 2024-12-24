@@ -26,11 +26,21 @@ public class AutomobileService {
     }
 
     public void deleteAutomobileById(Long id) {
-        if (automobileRepository.existsById(id))
-            automobileRepository.deleteById(id);
+        if (automobileRepository.existsById(id)){
+            Automobile existsAutomobile = getAutomobileById(id);
+            existsAutomobile.setStatus(false);
+            automobileRepository.save(existsAutomobile);
+        }
     }
 
     public Automobile addEditAutomobile(Automobile automobile) {
+        if(automobile.getId()==null){
+            automobile.setStatus(true);
+        }
+        else {
+            deleteAutomobileById(automobile.getId());
+            automobile.setId(null);
+        }
         return automobileRepository.save(automobile);
     }
 
@@ -39,8 +49,12 @@ public class AutomobileService {
         return automobileRepository.findByClientPhone(phone);
     }
 
+    public List<Automobile> getAllActualAutomobilesByClientPhone(String phone) {
+        return automobileRepository.findByStatusTrueAndClientPhone(phone);
+    }
+
     public Automobile getAutomobileByGosnumber(String gosnumber) {
-        Optional<Automobile> automobile = automobileRepository.findByGosnumber(gosnumber);
+        Optional<Automobile> automobile = automobileRepository.findByGosnumberAndStatusTrue(gosnumber);
         if(automobile.isEmpty()){
             throw new EntityNotFoundException("Автомобиль не найден");
         }

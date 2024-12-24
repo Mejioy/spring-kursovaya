@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.util.List;
@@ -13,11 +12,9 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Table(uniqueConstraints =
         {
-                @UniqueConstraint(columnNames = "id"),
-                @UniqueConstraint(columnNames = "gosnumber")
+                @UniqueConstraint(columnNames={"id", "gosnumber", "status"})
         },
         name = "automobiles"
 )
@@ -25,7 +22,7 @@ public class Automobile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private long id;
+    private Long id;
 
     @Column(name = "mark", nullable = false)
     @NotBlank(message = "Поле \"Марка\" не может быть пустым")
@@ -40,6 +37,9 @@ public class Automobile {
     @Column(name = "gosnumber", nullable = false)
     @Pattern(regexp = "^[ABEKMHOPCTYX]\\d{3}(?<!000)[ABEKMHOPCTYX]{2}\\d{2,3}rus$")
     private String gosnumber;
+
+    @Column(name = "status",nullable = false)
+    private boolean status;
 
     @ManyToOne
     @JoinColumn(name = "client_id")

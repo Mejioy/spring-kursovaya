@@ -1,13 +1,13 @@
-INSERT INTO clients (surname,name,patronym,phone) VALUES ('Ермилов','Михаил','Анатольевич','8(123)456-78-90');
-INSERT INTO clients (surname,name,patronym,phone) VALUES ('Ермилов','Михаил','Анатольевич','8(123)456-78-93');
-INSERT INTO clients (surname,name,patronym,phone) VALUES ('Баранов','Алексей','Михайлович','8(123)456-78-91');
+INSERT INTO clients (surname, name, patronym, phone) VALUES ('Ермилов','Михаил','Анатольевич','8(123)456-78-90');
+INSERT INTO clients (surname, name, patronym, phone) VALUES ('Ермилов','Михаил','Анатольевич','8(123)456-78-93');
+INSERT INTO clients (surname, name, patronym, phone) VALUES ('Баранов','Алексей','Михайлович','8(123)456-78-91');
 
-INSERT INTO automobiles (mark,model,gosnumber,client_id) VALUES ('BMW','M5','P444MP456rus',1);
-INSERT INTO automobiles (mark,model,gosnumber,client_id) VALUES ('BMW','M2','P444MP457rus',1);
-INSERT INTO automobiles (mark,model,gosnumber,client_id) VALUES ('BMW','M3','P444MP458rus',1);
-INSERT INTO automobiles (mark,model,gosnumber,client_id) VALUES ('BMW','M4','P444MP459rus',1);
+INSERT INTO automobiles (mark, model, gosnumber, client_id, status) VALUES ('BMW','M5','P444MP456rus',1,false);
+INSERT INTO automobiles (mark, model, gosnumber, client_id, status) VALUES ('BMW','M2','P444MP457rus',1,true);
+INSERT INTO automobiles (mark, model, gosnumber, client_id, status) VALUES ('BMW','M3','P444MP458rus',1,true);
+INSERT INTO automobiles (mark, model, gosnumber, client_id, status) VALUES ('BMW','M4','P444MP459rus',1,true);
 
-INSERT INTO automobiles (mark,model,gosnumber,client_id) VALUES ('AUDI','A4','A234PM33rus',2);
+INSERT INTO automobiles (mark,model,gosnumber,client_id, status) VALUES ('AUDI','A4','A234PM33rus',2,true);
 
 INSERT INTO services (name,price,status) VALUES ('Мойка автомобиля',500,false);
 INSERT INTO services (name,price,status) VALUES ('Мойка автомобиля',600,true);
