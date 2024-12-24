@@ -16,8 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @Table(uniqueConstraints =
         {
-                @UniqueConstraint(columnNames = "id"),
-                @UniqueConstraint(columnNames={"name", "status"})
+                @UniqueConstraint(columnNames={"id","name", "status"})
         },
         name = "services"
 )

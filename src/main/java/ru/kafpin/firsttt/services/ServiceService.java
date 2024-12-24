@@ -33,8 +33,10 @@ public class ServiceService {
     }
 
     public Service addEditService(Service service) {
-        if(service.getId()==null)
+        if(service.getId()==null){
+            service.setStatus(true);
             return serviceRepository.save(service);
+        }
         else{
             deleteServiceById(service.getId());
             service.setId(null);
