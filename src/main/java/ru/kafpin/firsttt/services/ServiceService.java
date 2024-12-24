@@ -13,7 +13,7 @@ public class ServiceService {
     private ServiceRepository serviceRepository;
 
     public List<Service> getAllServices() {
-        return (List<Service>) serviceRepository.findAll();
+        return serviceRepository.findByStatusTrue();
     }
 
     public Service getServiceById(Long id) {
@@ -25,17 +25,26 @@ public class ServiceService {
     }
 
     public void deleteServiceById(Long id) {
-        if (serviceRepository.existsById(id))
-            serviceRepository.deleteById(id);
+        if (serviceRepository.existsById(id)){
+            Service existsService = serviceRepository.findById(id).get();
+            existsService.setStatus(false);
+            serviceRepository.save(existsService);
+        }
     }
 
     public Service addEditService(Service service) {
-        return serviceRepository.save(service);
+        if(service.getId()==null)
+            return serviceRepository.save(service);
+        else{
+            deleteServiceById(service.getId());
+            service.setId(null);
+            return serviceRepository.save(service);
+        }
     }
 
     ///
     public Service getServiceByName(String name) {
-        Optional<Service> service = serviceRepository.findByName(name);
+        Optional<Service> service = serviceRepository.findByNameAndStatusTrue(name);
         if(service.isEmpty()){
             throw new EntityNotFoundException("Услуга не найдена");
         }

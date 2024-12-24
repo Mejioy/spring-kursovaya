@@ -9,9 +9,10 @@ INSERT INTO automobiles (mark,model,gosnumber,client_id) VALUES ('BMW','M4','P44
 
 INSERT INTO automobiles (mark,model,gosnumber,client_id) VALUES ('AUDI','A4','A234PM33rus',2);
 
-INSERT INTO services (name,price) VALUES ('Мойка автомобиля',500);
-INSERT INTO services (name,price,description) VALUES ('Оклейка автомобиля антигравийной пленкой',12500,'Антигравийная полиуретановая пленка SunTek PPF состоит из 5 слоев, каждый из которых несет свою функцию. Главной отличительной особенностью полиуретановой пленки от виниловой является ее плотность.');
-INSERT INTO services (name,price,description) VALUES ('test',12500,'dddd');
+INSERT INTO services (name,price,status) VALUES ('Мойка автомобиля',500,false);
+INSERT INTO services (name,price,status) VALUES ('Мойка автомобиля',600,true);
+INSERT INTO services (name,price,description,status) VALUES ('Оклейка автомобиля антигравийной пленкой',12500,'Антигравийная полиуретановая пленка SunTek PPF состоит из 5 слоев, каждый из которых несет свою функцию. Главной отличительной особенностью полиуретановой пленки от виниловой является ее плотность.',true);
+INSERT INTO services (name,price,description,status) VALUES ('test',12500,'dddd',true);
 
 
 INSERT INTO employers (surname, name, patronym, phone, city, street, house, appartment) VALUES ('Зубова','Альбина','Артёмовна','8(777)434-22-11', 'Муром', 'Муромская', 14, 1);

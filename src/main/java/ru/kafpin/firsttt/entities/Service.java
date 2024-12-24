@@ -17,7 +17,7 @@ import java.util.List;
 @Table(uniqueConstraints =
         {
                 @UniqueConstraint(columnNames = "id"),
-                @UniqueConstraint(columnNames = "name")
+                @UniqueConstraint(columnNames={"name", "status"})
         },
         name = "services"
 )
@@ -25,7 +25,7 @@ public class Service {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private long id;
+    private Long id;
 
     @Column(name = "name", nullable = false)
     @NotBlank(message = "Поле \"Название\" не может быть пустым")
@@ -39,6 +39,9 @@ public class Service {
     @Column(name = "description", nullable = true)
     @Size(min = 2, max=200, message = "Допустимая длина названия услуги от 2ух до 200от символов")
     private String description;
+
+    @Column(name = "status",nullable = false)
+    private boolean status;
 
     @OneToMany(mappedBy = "service", cascade = CascadeType.ALL)
     @JsonBackReference
