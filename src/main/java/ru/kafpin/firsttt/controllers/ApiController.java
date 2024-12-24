@@ -210,8 +210,8 @@ public class ApiController {
         return employerService.getEmployerByPhone(phone);
     }
 
-    @GetMapping("/services/name/{name}")
-    public Service getServiceByName(@PathVariable("name") String name){
+    @PostMapping("/services/name")
+    public Service getServiceByName(@RequestBody String name){
         return serviceService.getServiceByName(name);
     }
 

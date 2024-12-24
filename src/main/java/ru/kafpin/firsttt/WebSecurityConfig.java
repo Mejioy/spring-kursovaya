@@ -28,8 +28,9 @@ public class WebSecurityConfig {
                         .requestMatchers(HttpMethod.PUT,"/api/automobiles/**","/api/providedservices/**").hasRole("EMPLOYER")
                         .requestMatchers(HttpMethod.DELETE,"/api/automobiles/**","/api/providedservices/**").hasRole("EMPLOYER")
 
-                        .requestMatchers(HttpMethod.GET,"**").authenticated()
+                        .requestMatchers(HttpMethod.GET,"/**").authenticated()
                         .requestMatchers("/api/login").authenticated()
+                        .requestMatchers(HttpMethod.POST,"/api/services/name").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST, "/api/registry").anonymous())
 
                 .csrf(AbstractHttpConfigurer::disable)
