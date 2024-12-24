@@ -14,7 +14,7 @@ public class EmployerService {
     private EmployerRepository employerRepository;
 
     public List<Employer> getAllEmployers() {
-        return (List<Employer>) employerRepository.findAll();
+        return employerRepository.findByStatusTrue();
     }
 
     public Employer getEmployerById(Long id) {
@@ -26,17 +26,27 @@ public class EmployerService {
     }
 
     public void deleteEmployerById(Long id) {
-        if (employerRepository.existsById(id))
-            employerRepository.deleteById(id);
+        if (employerRepository.existsById(id)){
+            Employer existsEmployer = getEmployerById(id);
+            existsEmployer.setStatus(false);
+            employerRepository.save(existsEmployer);
+        }
     }
 
     public Employer addEditEmployer(Employer employer) {
+        if(employer.getId()==null){
+            employer.setStatus(true);
+        }
+        else {
+            deleteEmployerById(employer.getId());
+            employer.setId(null);
+        }
         return employerRepository.save(employer);
     }
 
     ///Specific methods
     public Employer getEmployerByPhone(String phone) {
-        Optional<Employer> employer = employerRepository.findByPhone(phone);
+        Optional<Employer> employer = employerRepository.findByPhoneAndStatusTrue(phone);
         if(employer.isEmpty()){
             throw new EntityNotFoundException("Сотрудник не найден");
         }

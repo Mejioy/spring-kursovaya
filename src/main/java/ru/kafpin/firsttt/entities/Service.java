@@ -13,7 +13,6 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Table(uniqueConstraints =
         {
                 @UniqueConstraint(columnNames={"id","name", "status"})
@@ -45,10 +44,4 @@ public class Service {
     @OneToMany(mappedBy = "service", cascade = CascadeType.ALL)
     @JsonBackReference
     private List<ProvidedService> providedServices;
-
-    public Service(long id, String name, int price) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-    }
 }

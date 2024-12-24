@@ -15,10 +15,11 @@ INSERT INTO services (name,price,description,status) VALUES ('Оклейка а�
 INSERT INTO services (name,price,description,status) VALUES ('test',12500,'dddd',true);
 
 
-INSERT INTO employers (surname, name, patronym, phone, city, street, house, appartment) VALUES ('Зубова','Альбина','Артёмовна','8(777)434-22-11', 'Муром', 'Муромская', 14, 1);
-INSERT INTO employers (surname, name, patronym, phone, city, street, house, appartment) VALUES ('Карасёв','Эдуард','Михайлович','8(777)434-22-12', 'Навашино', 'Московская', 16, 1);
-INSERT INTO employers (surname, name, patronym, phone, city, street, house) VALUES ('Зубарев','Аркадий','Петрович','8(444)233-33-51', 'Москва', 'Московская', 19);
-INSERT INTO employers (surname, name, patronym, phone, city, street, house) VALUES ('Зубарева','Альбина','Михайлович','8(444)233-33-52', 'Муром', 'Муромская', 22);
+INSERT INTO employers (surname, name, patronym, phone, city, street, house, status) VALUES ('Зубова','Альбина','Артёмовна','8(777)434-22-11', 'Навашино', 'Муромская', 14,false);
+INSERT INTO employers (surname, name, patronym, phone, city, street, house, appartment,status) VALUES ('Зубова','Альбина','Артёмовна','8(777)434-22-11', 'Муром', 'Муромская', 14, 1,true);
+INSERT INTO employers (surname, name, patronym, phone, city, street, house, appartment,status) VALUES ('Карасёв','Эдуард','Михайлович','8(777)434-22-12', 'Навашино', 'Московская', 16, 1,true);
+INSERT INTO employers (surname, name, patronym, phone, city, street, house,status) VALUES ('Зубарев','Аркадий','Петрович','8(444)233-33-51', 'Москва', 'Московская', 19,true);
+INSERT INTO employers (surname, name, patronym, phone, city, street, house,status) VALUES ('Зубарева','Альбина','Михайлович','8(444)233-33-52', 'Муром', 'Муромская', 22,true);
 
 INSERT INTO providedservices (service_id, employer_id, automobile_id, dateofprovide) VALUES (1, 1, 1, '2020-02-19');
 INSERT INTO providedservices (service_id, employer_id, automobile_id, dateofprovide) VALUES (1, 2, 1, '2024-02-19');

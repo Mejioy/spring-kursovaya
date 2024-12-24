@@ -26,7 +26,7 @@ public class ServiceService {
 
     public void deleteServiceById(Long id) {
         if (serviceRepository.existsById(id)){
-            Service existsService = serviceRepository.findById(id).get();
+            Service existsService = getServiceById(id);
             existsService.setStatus(false);
             serviceRepository.save(existsService);
         }
@@ -35,13 +35,12 @@ public class ServiceService {
     public Service addEditService(Service service) {
         if(service.getId()==null){
             service.setStatus(true);
-            return serviceRepository.save(service);
         }
         else{
             deleteServiceById(service.getId());
             service.setId(null);
-            return serviceRepository.save(service);
         }
+        return serviceRepository.save(service);
     }
 
     ///

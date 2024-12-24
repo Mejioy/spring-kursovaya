@@ -14,11 +14,9 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Table(uniqueConstraints =
         {
-                @UniqueConstraint(columnNames = "id"),
-                @UniqueConstraint(columnNames = "phone")
+                @UniqueConstraint(columnNames={"id","phone", "status"})
         },
         name = "employers"
 )
@@ -26,7 +24,7 @@ public class Employer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private long id;
+    private Long id;
 
     @Column(name = "name", nullable = false)
     @NotBlank(message = "Поле \"Имя\" не может быть пустым")
@@ -66,15 +64,6 @@ public class Employer {
     @JsonBackReference
     private List<ProvidedService> providedServices;
 
-
-    public Employer(long id, String surName, String name, String patronym, String phone,  String city, String street, int house) {
-        this.id = id;
-        this.name = name;
-        this.surName = surName;
-        this.patronym = patronym;
-        this.phone = phone;
-        this.city = city;
-        this.street = street;
-        this.house = house;
-    }
+    @Column(name = "status",nullable = false)
+    private boolean status;
 }
