@@ -217,7 +217,7 @@ public class ApiController {
     }
 
     @GetMapping("/providededservices/between/from={from}to={to}")
-    public Iterable<ProvidedService> listOfProvidedServices(@PathVariable("from") LocalDate from,@PathVariable("to") LocalDate to ){
+    public Iterable<ProvidedService> listOfProvidedServices(@PathVariable("from") LocalDate from,@PathVariable("to") LocalDate to){
         return providedServiceService.getAllProvidedServicesFromTo(from,to);
     }
 
@@ -226,5 +226,9 @@ public class ApiController {
         return providedServiceService.getAllProvidedServicesByAutomobileId(id);
     }
 
+    @GetMapping("write/from={from}to={to}")
+    public String sendReport(@PathVariable("from") LocalDate from,@PathVariable("to") LocalDate to){
+        return providedServiceService.sendReport(from,to);
+    }
 
 }

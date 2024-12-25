@@ -33,4 +33,13 @@ public class ProvidedService {
     @DateTimeFormat(pattern="yyyy-MM-dd")
     @Column(name = "dateofprovide", nullable = false)
     private LocalDate dateOfProvide;
+
+    public String repData(){
+        return "Сотрудник: " + employer.getSurName() + ' ' + employer.getName() + ' ' + employer.getPatronym() + '\n'+
+                "Услуга: " + service.getName() + " стоимость:" + service.getPrice() +" рублей\n" +
+                "Клиент: " + automobile.getClient().getSurName() + ' ' + automobile.getClient().getName() + ' ' + automobile.getClient().getPatronym() + '\n'+
+                "Автомобиль: " + automobile.getMark() + ' ' + automobile.getModel() + ' ' + automobile.getGosnumber() + '\n' +
+                "Дата оказания:" + dateOfProvide.toString() + '\n' +
+                "--------------------------------------";
+    }
 }
